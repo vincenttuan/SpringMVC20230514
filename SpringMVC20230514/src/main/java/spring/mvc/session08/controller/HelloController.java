@@ -56,7 +56,8 @@ public class HelloController {
 	@ResponseBody
 	public String getAvgOfAge(@RequestParam("age") List<Integer> ages) {
 		double avg = ages.stream()
-						 .mapToInt(Integer::intValue)  // 將 Integer 轉 int
+						 .mapToInt(age -> age.intValue())  // 將 Integer 轉 int
+						 //.mapToInt(Integer::intValue)  // 將 Integer 轉 int
 						 .average() // 取得平均物件
 						 .getAsDouble(); // 得到平均的 double 值
 		return String.format("avg = %.1f", avg);
