@@ -126,6 +126,23 @@ public class HelloController {
 	 * 路徑：/mvc/hello/calc/sub            -> Result：0
 	 * 請設計一個方法可以滿足上面路徑的請求
 	 * */
+	@RequestMapping(value = "/calc/{exp}")
+	@ResponseBody
+	public String calc(@PathVariable("exp") String exp,
+						@RequestParam(value = "x", required = false, defaultValue = "0") Integer x,
+						@RequestParam(value = "y", required = false, defaultValue = "0") Integer y) {
+		int result = 0;
+		switch (exp) {
+			case "add":
+				result = x + y;
+				break;
+			case "sub":
+				result = x - y;
+				break;
+			}
+		return String.format("Result: %d", result);
+	}
+	
 }
 
 
