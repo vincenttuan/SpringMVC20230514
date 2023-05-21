@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -94,7 +95,8 @@ public class HelloController {
 		return personMap.toString();
 	}
 	
-	/* 7. 得到多筆資料自動 Mapping 到指定物件
+	/* 
+	 * 7. 得到多筆資料自動 Mapping 到指定物件
 	 * 路徑：/mvc/hello/user?name=John&score=90&age=18&pass=true
 	 * 路徑：/mvc/hello/user?name=Mary&score=40&age=17&pass=false
 	 * */
@@ -102,6 +104,17 @@ public class HelloController {
 	@ResponseBody
 	public String getUser(User user) {
 		return user.toString();
+	}
+	
+	/* 
+	 * 8. 路徑參數 @PathVariable
+	 * 路徑：/mvc/hello/javaexam/75
+	 * 路徑：/mvc/hello/javaexam/45
+	 * */
+	@RequestMapping(value = "/javaexam/{score}")
+	@ResponseBody
+	public String getJavaExam(@PathVariable("score") Integer score) {
+		return String.format("Java: %d %s", score, (score>=60)?"pass":"fail");
 	}
 }
 
