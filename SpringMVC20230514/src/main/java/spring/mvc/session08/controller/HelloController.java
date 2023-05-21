@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import spring.mvc.session08.entity.User;
+
 @Controller
 @RequestMapping(value = "/hello")
 public class HelloController {
@@ -82,7 +84,7 @@ public class HelloController {
 				stat.getMax(), stat.getMin(), stat.getAverage(), stat.getSum());
 	}
 	
-	/* 5. 得到多筆資料轉 Map
+	/* 6. 得到多筆資料轉 Map
 	 * 路徑：/mvc/hello/person?name=John&score=90&age=18&pass=true
 	 * 路徑：/mvc/hello/person?name=Mary&score=40&age=17&pass=false
 	 * */
@@ -90,6 +92,16 @@ public class HelloController {
 	@ResponseBody
 	public String getPerson(@RequestParam Map<String, String> personMap) {
 		return personMap.toString();
+	}
+	
+	/* 7. 得到多筆資料自動 Mapping 到指定物件
+	 * 路徑：/mvc/hello/user?name=John&score=90&age=18&pass=true
+	 * 路徑：/mvc/hello/user?name=Mary&score=40&age=17&pass=false
+	 * */
+	@RequestMapping("/user")
+	@ResponseBody
+	public String getUser(User user) {
+		return user.toString();
 	}
 }
 
