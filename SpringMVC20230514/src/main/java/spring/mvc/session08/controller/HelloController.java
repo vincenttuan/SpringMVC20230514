@@ -22,14 +22,22 @@ public class HelloController {
 	/*
 	 * 2. ?帶參數 @RequestParam
 	 * 路徑：/mvc/hello/sayhi?name=John&age=18
+	 * 限制：name 的參數是一定要有的(預設)
+	 *      age 的參數是不一定要有的, 初始值 = 0
 	 * */
 	@RequestMapping(value = "/sayhi")
 	@ResponseBody
-	public String sayHi(@RequestParam(value = "name") String name,
-						@RequestParam(value = "age") Integer age) {
+	public String sayHi(@RequestParam(value = "name", required = true) String name,
+						@RequestParam(value = "age", required = false, defaultValue = "0") Integer age) {
 		String data = String.format("Hi %s, %d", name, age);
 		return data;
 	}
+	
+	/*
+	 * 3. Lab 練習
+	 * 路徑: /mvc/hello/bmi?h=170.0&w=60.0
+	 * 請設計一個 bmi 方法執行上述路徑後會得到 bmi = 20.76
+	 * */
 	
 	
 }
