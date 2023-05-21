@@ -2,6 +2,7 @@ package spring.mvc.session08.controller;
 
 import java.util.IntSummaryStatistics;
 import java.util.List;
+import java.util.Map;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -81,6 +82,15 @@ public class HelloController {
 				stat.getMax(), stat.getMin(), stat.getAverage(), stat.getSum());
 	}
 	
+	/* 5. 得到多筆資料轉 Map
+	 * 路徑：/mvc/hello/person?name=John&score=90&age=18&pass=true
+	 * 路徑：/mvc/hello/person?name=Mary&score=40&age=17&pass=false
+	 * */
+	@RequestMapping("/person")
+	@ResponseBody
+	public String getPerson(@RequestParam Map<String, String> personMap) {
+		return personMap.toString();
+	}
 }
 
 
