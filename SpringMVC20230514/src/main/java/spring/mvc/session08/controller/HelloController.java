@@ -63,6 +63,12 @@ public class HelloController {
 		return String.format("avg = %.1f", avg);
 	}
 	
+	/*
+	 * 5. Lab 練習: 得到多筆 score 資料
+	 * 路徑：/mvc/hello/exam?score=80&score=100&score=50
+	 * 請自行設計一個方法，此方法可以印出最高分、最低分、平均與總分
+	 * */
+	
 }
 
 
