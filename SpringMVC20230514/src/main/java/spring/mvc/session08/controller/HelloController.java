@@ -143,6 +143,16 @@ public class HelloController {
 		return String.format("Result: %d", result);
 	}
 	
+	/*
+	 * 10. @PathVariable (萬用字元: 任意多字(*)、任意一字(?))
+	 * 路徑：/mvc/hello/any/aaabbc/java8
+	 * 路徑：/mvc/hello/any/d/java9
+	 * */
+	@RequestMapping(value = "/any/*/java?")
+	@ResponseBody
+	public String any() {
+		return "Any";
+	}
 }
 
 
