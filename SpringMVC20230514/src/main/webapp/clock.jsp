@@ -8,6 +8,6 @@
 </head>
 <body style="padding: 10px">
 	<img width="100" src="${pageContext.request.contextPath}/images/clock.png">
-	<h2>現在時刻：</h2>
+	<h2>現在時刻：${ data }</h2>
 </body>
 </html>
