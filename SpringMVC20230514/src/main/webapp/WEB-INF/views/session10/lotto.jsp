@@ -27,8 +27,45 @@
 			最新電腦選號：${ param.lotto }
 		</div>
 		<!-- 歷史電腦選號 -->
-		<div>
-			歷史電腦選號：${ lottos }
-		</div>
+		<table class="pure-table pure-table-bordered">
+			<thead>
+				<tr>
+					<th>index</th>
+					<th>號碼 1</th>
+					<th>號碼 2</th>
+					<th>號碼 3</th>
+					<th>號碼 4</th>
+					<th>號碼 5</th>
+					<th>更新</th>
+					<th>刪除</th>
+				</tr>
+			</thead>
+			<tbody>
+				<!-- 分析 List 集合 -->
+				<c:forEach varStatus="status" var="lotto" items="${ lottos }">
+					<tr>
+						<td>${ status.index }</td>
+						<!-- 分析 Set 集合 -->
+						<c:forEach var="num_status" var="num" items="${ lotto }">
+							<td>${ num }</td>
+						</c:forEach>
+						<td>
+							<button type="button" 
+									onclick="" 
+									class="pure-button">
+								更新
+							</button>
+						</td>
+						<td>
+							<button type="button" 
+									onclick="" 
+									class="pure-button">
+								刪除
+							</button>
+						</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
 	</body>
 </html>
