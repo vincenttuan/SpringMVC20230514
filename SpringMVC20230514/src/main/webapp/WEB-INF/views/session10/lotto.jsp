@@ -10,7 +10,22 @@
 		<link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css">
 		<title>Lotto</title>
 	</head>
-	<body>
-	
+	<body style="padding: 15px">
+		<!-- 電腦選號 -->
+		<form class="pure-form" 
+			  method="get" 
+			  action="${pageContext.request.contextPath}/mvc/lotto/add">
+			<fieldset>
+				<legend>Lotto 539 電腦選號</legend>
+				<button type="submit" class="pure-button pure-button-primary">
+					取得最新電腦選號
+				</button>
+			</fieldset>
+		</form>
+		<!-- 最新電腦選號 -->
+		<div>
+			最新電腦選號：${ lotto }
+		</div>
+		
 	</body>
 </html>
