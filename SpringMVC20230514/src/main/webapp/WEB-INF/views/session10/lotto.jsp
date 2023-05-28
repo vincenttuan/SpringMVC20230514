@@ -53,14 +53,14 @@
 						</c:forEach>
 						<td>
 							<button type="button" 
-									onclick="" 
+									onclick="window.location.href='${pageContext.request.contextPath}/mvc/lotto/update/${ status.index }';" 
 									class="pure-button">
 								更新
 							</button>
 						</td>
 						<td>
 							<button type="button" 
-									onclick="" 
+									onclick="window.location.href='${pageContext.request.contextPath}/mvc/lotto/delete/${ status.index }';" 
 									class="pure-button">
 								刪除
 							</button>
