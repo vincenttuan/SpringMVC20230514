@@ -3,9 +3,12 @@ package spring.mvc.session10.service;
 import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
+import java.util.Map;
 import java.util.Random;
 import java.util.Set;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.function.Function;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 
@@ -67,5 +70,18 @@ public class LottoService {
 	}
 	
 	// 分組統計資料與排序
+	public Map<Integer, Long> getLottoStatistics() {
+		// 1. 將資料彙集
+		// {[10, 20, 30, 5, 6], [11, 21, 31, 15, 16], [12, 22, 32, 5, 6] ...}
+		// {10, 20, 30, 5, 6, 11, 21, 31, 15, 16, 12, 22, 32, 5, 6 ...}
+		List<Integer> nums = lottos.stream()
+									.flatMap(lotto -> lotto.stream())
+									.collect(Collectors.toList());
+		// 2. 資料分組
+		Map<Integer, Long> stat = nums.stream()
+				.collect(Collectors.groupingBy(Function.identity(), Collectors.counting()));
+		
+		return stat;
+	}
 	
 }
