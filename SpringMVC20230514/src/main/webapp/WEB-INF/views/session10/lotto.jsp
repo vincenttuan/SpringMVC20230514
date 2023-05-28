@@ -26,6 +26,9 @@
 		<div>
 			最新電腦選號：${ param.lotto }
 		</div>
-		
+		<!-- 歷史電腦選號 -->
+		<div>
+			歷史電腦選號：${ lottos }
+		</div>
 	</body>
 </html>
