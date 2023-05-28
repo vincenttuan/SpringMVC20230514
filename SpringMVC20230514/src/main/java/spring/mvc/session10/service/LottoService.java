@@ -1,5 +1,6 @@
 package spring.mvc.session10.service;
 
+import java.util.ArrayList;
 import java.util.LinkedHashSet;
 import java.util.List;
 import java.util.Random;
@@ -33,6 +34,20 @@ public class LottoService {
 	}
 	
 	// 修改指定紀錄(某一個欄位)
+	public void update(int rowIndex, int columnIndex) {
+		Set<Integer> rowSet = lottos.get(rowIndex);
+		List<Integer> rowList = new ArrayList<>(rowSet);
+		while (true) {
+			int newNum = new Random().nextInt(39) + 1;
+			// 檢查 newNum 是否有含在 rowList 中, 若有則重取
+			if(rowList.stream().filter(n -> n.intValue() == newNum).findAny().isEmpty()) {
+				rowList.set(columnIndex, newNum);
+				break;
+			}
+		}
+		lottos.set(rowIndex, new LinkedHashSet<>(rowList));
+	}
+	
 	
 	// 刪除指定紀錄(一整列)
 	public void delete(int index) {
