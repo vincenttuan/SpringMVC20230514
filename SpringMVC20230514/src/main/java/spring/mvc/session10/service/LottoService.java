@@ -15,10 +15,11 @@ public class LottoService {
 	private List<Set<Integer>> lottos = new CopyOnWriteArrayList<>(); // 支援多執行緒的集合(Thread-safe)
 	
 	// 新增一筆紀錄
-	public void add() {
+	public Set<Integer> add() {
 		// 得到 539 的電腦選號
 		Set<Integer> lotto = getRandomLotto();
 		lottos.add(0, lotto); // 0: 表示每次新的號碼都放到最前面
+		return lotto;
 	}
 	
 	// 查詢多筆紀錄

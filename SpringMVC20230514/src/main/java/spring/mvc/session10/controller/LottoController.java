@@ -8,6 +8,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import spring.mvc.session10.service.LottoService;
 
@@ -28,8 +29,9 @@ public class LottoController {
 	
 	// 新增一筆 lotto
 	@GetMapping("/add")
-	public String add(Model model) {
-		lottoService.add();
+	public String add(Model model, RedirectAttributes attr) {
+		Set<Integer> lotto = lottoService.add();
+		attr.addAttribute("lotto", lotto);
 		return "redirect:./"; // 重導至 "/" 首頁
 	}
 }
