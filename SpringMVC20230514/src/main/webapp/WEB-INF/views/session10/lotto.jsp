@@ -27,6 +27,7 @@
 			最新電腦選號：${ param.lotto }
 		</div>
 		<p>
+		電腦選號統計資料：
 		<!-- 電腦選號統計資料 -->
 		<table class="pure-table pure-table-bordered">
 			<thead>
