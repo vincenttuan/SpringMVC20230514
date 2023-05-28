@@ -26,6 +26,8 @@
 		<div>
 			最新電腦選號：${ param.lotto }
 		</div>
+		<p>
+		歷史電腦選號紀錄（${ fn:length(lottos) }）：
 		<!-- 歷史電腦選號 -->
 		<table class="pure-table pure-table-bordered">
 			<thead>
