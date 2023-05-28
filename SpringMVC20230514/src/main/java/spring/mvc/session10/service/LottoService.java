@@ -28,10 +28,16 @@ public class LottoService {
 	}
 	
 	// 修改指定紀錄(一整列)
+	public void update(int index) {
+		lottos.set(index, getRandomLotto());
+	}
 	
 	// 修改指定紀錄(某一個欄位)
 	
 	// 刪除指定紀錄(一整列)
+	public void delete(int index) {
+		lottos.remove(index);
+	}
 	
 	// 透過電腦選號產生號碼
 	private Set<Integer> getRandomLotto() {
