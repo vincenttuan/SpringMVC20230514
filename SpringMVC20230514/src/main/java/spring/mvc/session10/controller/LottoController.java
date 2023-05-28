@@ -46,6 +46,13 @@ public class LottoController {
 	}
 	
 	// 修改指定紀錄(某一個欄位)
+	@GetMapping("/update/{row_index}/{col_index}")
+	public String update(@PathVariable("row_index") int rowIndex,
+						 @PathVariable("col_index") int colIndex) {
+		lottoService.update(rowIndex, colIndex);
+		return "redirect:../../"; // 重導至 "/" 首頁
+	}
+	
 	
 	// 刪除 lotto
 	@GetMapping("/delete/{index}")
