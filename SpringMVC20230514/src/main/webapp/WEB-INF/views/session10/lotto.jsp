@@ -27,6 +27,26 @@
 			最新電腦選號：${ param.lotto }
 		</div>
 		<p>
+		<!-- 電腦選號統計資料 -->
+		<table class="pure-table pure-table-bordered">
+			<thead>
+				<tr>
+					<th>號碼</th>
+					<c:forEach var="st" items="${ stat }">
+						<th nowrap>${ st.key }</th>
+					</c:forEach>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th>次數</th>
+					<c:forEach var="st" items="${ stat }">
+						<th nowrap>${ st.value }</th>
+					</c:forEach>
+				</tr>
+			</tbody>
+		</table>
+		<p>
 		歷史電腦選號紀錄（${ fn:length(lottos) }）：
 		<!-- 歷史電腦選號 -->
 		<table class="pure-table pure-table-bordered">
