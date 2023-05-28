@@ -50,7 +50,7 @@
 						<!-- 分析 Set 集合 -->
 						<c:forEach varStatus="num_status" var="num" items="${ lotto }">
 							<td>
-								<a href="">
+								<a href="${pageContext.request.contextPath}/mvc/lotto/update/${ status.index }/${ num_status.index }">
 									${ num }
 								</a>
 							</td>
