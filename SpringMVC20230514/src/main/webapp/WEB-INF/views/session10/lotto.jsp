@@ -51,7 +51,7 @@
 						<c:forEach varStatus="num_status" var="num" items="${ lotto }">
 							<td>
 								<a href="${pageContext.request.contextPath}/mvc/lotto/update/${ status.index }/${ num_status.index }">
-									${ num }
+									<fmt:formatNumber value="${ num }" pattern="00" />
 								</a>
 							</td>
 						</c:forEach>
