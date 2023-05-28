@@ -15,7 +15,8 @@ public class ShowDataController {
 	@RequestMapping("/case1")
 	public ModelAndView case1() {
 		String data = new Date() + ""; // model: 資料
-		String view = "/WEB-INF/views/session09/clock.jsp"; // view: 資料渲染處
+		//String view = "/WEB-INF/views/session09/clock.jsp"; // view: 資料渲染處
+		String view = "session09/clock"; // view: 資料渲染處
 		//------------------------------------------
 		ModelAndView mav = new ModelAndView();
 		mav.addObject("data", data); // 配置資料
