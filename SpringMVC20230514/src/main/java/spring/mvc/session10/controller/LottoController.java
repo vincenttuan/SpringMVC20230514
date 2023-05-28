@@ -45,6 +45,8 @@ public class LottoController {
 		return "redirect:../"; // 重導至 "/" 首頁
 	}
 	
+	// 修改指定紀錄(某一個欄位)
+	
 	// 刪除 lotto
 	@GetMapping("/delete/{index}")
 	public String delete(@PathVariable("index") int index) {

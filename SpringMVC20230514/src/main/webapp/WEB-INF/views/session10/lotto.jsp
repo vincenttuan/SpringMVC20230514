@@ -49,7 +49,11 @@
 						<td>${ status.index }</td>
 						<!-- 分析 Set 集合 -->
 						<c:forEach varStatus="num_status" var="num" items="${ lotto }">
-							<td>${ num }</td>
+							<td>
+								<a href="">
+									${ num }
+								</a>
+							</td>
 						</c:forEach>
 						<td>
 							<button type="button" 
