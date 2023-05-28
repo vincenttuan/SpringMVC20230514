@@ -46,7 +46,7 @@
 					<tr>
 						<td>${ status.index }</td>
 						<!-- 分析 Set 集合 -->
-						<c:forEach var="num_status" var="num" items="${ lotto }">
+						<c:forEach varStatus="num_status" var="num" items="${ lotto }">
 							<td>${ num }</td>
 						</c:forEach>
 						<td>
