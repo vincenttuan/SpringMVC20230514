@@ -12,7 +12,68 @@
 		<meta charset="UTF-8">
 		<title>User Form</title>
 	</head>
-	<body>
+	<body style="padding: 15px">
+		
+		<table>
+			<tr>
+				<td valign="top" style="padding: 5px">
+					<!-- User form -->
+					
+				</td>
+				<td valign="top" style="padding: 5px">
+					<!-- User list -->
+					<form class="pure-form">
+						<fieldset>
+							<legend>User List</legend>
+							
+							<table class="pure-table pure-table-bordered">
+								<thead>
+									<tr>
+										<th nowrap>index</th>
+										<th nowrap>姓名</th>
+										<th nowrap>年齡</th>
+										<th nowrap>生日</th>
+										<th nowrap>學歷</th>
+										<th nowrap>性別</th>
+										<th nowrap>興趣</th>
+										<th nowrap>履歷</th>
+										<th nowrap>修改</th>
+										<th nowrap>刪除</th>
+									</tr>
+								</thead>
+								
+								<tbody>
+									<c:forEach varStatus="status" var="user" items="${ users }">
+										<tr>
+											<td nowrap>${ status.index }</td>
+											<td nowrap>${ user.name }</td>
+											<td nowrap>${ user.age }</td>
+											<td nowrap>${ user.birth }</td>
+											<td nowrap>${ user.education }</td>
+											<td nowrap>${ user.sex }</td>
+											<td nowrap>${ user.interest }</td>
+											<td nowrap>${ userr.resume }</td>
+											<td nowrap>
+												<button type="button"
+														onclick=""
+														class="pure-button">修改</button>
+											</td>
+											<td nowrap>
+												<button type="button"
+														onclick=""
+														class="pure-button">刪除</button>
+											</td>
+										</tr>
+									</c:forEach>
+								</tbody>
+							
+							</table>
+							
+						</fieldset>
+					</form>
+				</td>
+			</tr>
+		</table>
 		
 	</body>
 </html>
