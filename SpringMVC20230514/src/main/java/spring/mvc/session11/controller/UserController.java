@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import spring.mvc.session11.entity.User;
@@ -32,6 +33,13 @@ public class UserController {
 		model.addAttribute("submitButtonName", "新增");
 		model.addAttribute("users", users);
 		return "session11/user";
+	}
+	
+	// 新增
+	@PostMapping("/")
+	public String add(@ModelAttribute User user) {
+		users.add(user);
+		return "redirect:./";
 	}
 	
 	
