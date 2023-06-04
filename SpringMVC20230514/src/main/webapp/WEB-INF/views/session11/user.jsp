@@ -11,6 +11,13 @@
 		<link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css">
 		<meta charset="UTF-8">
 		<title>User Form</title>
+		<style type="text/css">
+			.checkbox-group,
+			.radio-group {
+				margin-right: 2px;
+				margin-left: 5px
+			}
+		</style>
 	</head>
 	<body style="padding: 15px">
 		
@@ -32,9 +39,9 @@
 									<spform:option value="">請選擇</spform:option>
 									<spform:options items="${ educationList }"/>
 								 </spform:select><p />
-							性別：<spform:radiobuttons path="sex" items="${ sexList }" />
+							性別：<spform:radiobuttons path="sex" items="${ sexList }" cssClass="radio-group" />
 								 <p />
-							興趣：<spform:checkboxes path="interest" items="${ interestList }" />
+							興趣：<spform:checkboxes path="interest" items="${ interestList }" cssClass="checkbox-group" />
 								 <p />
 							履歷：<spform:textarea path="resume" /><p />
 							<!-- 自訂表單元素 -->
