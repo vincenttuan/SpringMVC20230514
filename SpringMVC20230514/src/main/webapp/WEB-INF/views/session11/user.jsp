@@ -34,7 +34,7 @@
 								 </spform:select><p />
 							性別：<spform:radiobuttons path="sex" items="${ sexList }" />
 								 <p />
-							興趣：<spform:checkboxes path="interes" items="${ interestList }" />
+							興趣：<spform:checkboxes path="interest" items="${ interestList }" />
 								 <p />
 							履歷：<spform:textarea path="resume" /><p />
 							<!-- 自訂表單元素 -->
