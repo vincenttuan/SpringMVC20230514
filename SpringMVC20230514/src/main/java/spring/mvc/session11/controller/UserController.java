@@ -1,5 +1,6 @@
 package spring.mvc.session11.controller;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
@@ -21,6 +22,8 @@ import spring.mvc.session11.entity.User;
 public class UserController {
 	
 	private List<User> users = new CopyOnWriteArrayList<>();
+	private List<String> educationList = Arrays.asList("小學", "國中", "高中", "大學", "研究所");
+	
 	// 預設資料
 	{	
 		users.add(new User("Vincent", "2010-05-01", "大學", "男", new String[] {"飛控"}, "Test1"));
@@ -36,6 +39,7 @@ public class UserController {
 		model.addAttribute("_method", "POST");
 		model.addAttribute("submitButtonName", "新增");
 		model.addAttribute("users", users);
+		model.addAttribute("educationList", educationList);
 		return "session11/user";
 	}
 	
@@ -51,6 +55,7 @@ public class UserController {
 		model.addAttribute("user", user);
 		model.addAttribute("index", index);
 		model.addAttribute("users", users);
+		model.addAttribute("educationList", educationList);
 		
 		switch (action) {
 			case "update":
