@@ -81,7 +81,7 @@ public class UserController {
 	}
 	
 	// 刪除
-	@DeleteMapping("/{index")
+	@DeleteMapping("/{index}")
 	public String delete(@PathVariable("index") int index) {
 		users.remove(index);
 		return "redirect:./";
