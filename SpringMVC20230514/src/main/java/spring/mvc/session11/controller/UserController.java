@@ -7,8 +7,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import spring.mvc.session11.entity.User;
 
@@ -32,6 +34,33 @@ public class UserController {
 		model.addAttribute("_method", "POST");
 		model.addAttribute("submitButtonName", "新增");
 		model.addAttribute("users", users);
+		return "session11/user";
+	}
+	
+	// 單筆查詢
+	// 範例：/SpringMVC20230514/mvc/session11/user/1?action=update
+	// 範例：/SpringMVC20230514/mvc/session11/user/2?action=delete
+	@GetMapping("/{index}")
+	public String get(@PathVariable("index") int index, 
+					  @RequestParam(value = "action", required = true) String action,
+					  Model model) {
+		
+		User user = users.get(index);
+		model.addAttribute("user", user);
+		model.addAttribute("index", index);
+		model.addAttribute("users", users);
+		
+		switch (action) {
+			case "update":
+				model.addAttribute("_method", "PUT");
+				model.addAttribute("submitButtonName", "修改");
+				break;
+			case "delete":
+				model.addAttribute("_method", "DELETE");
+				model.addAttribute("submitButtonName", "刪除");
+				break;
+		}
+		
 		return "session11/user";
 	}
 	
