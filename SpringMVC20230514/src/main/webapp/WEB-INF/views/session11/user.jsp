@@ -32,8 +32,8 @@
 									<spform:option value="">請選擇</spform:option>
 									<spform:options items="${ educationList }"/>
 								 </spform:select><p />
-							性別：<spform:radiobutton path="sex" value="男" />男
-								 <spform:radiobutton path="sex" value="女" />女<p />
+							性別：<spform:radiobuttons path="sex" items="${ sexList }" />
+								 <p />
 							興趣：<spform:checkbox path="interest" value="爬山" />爬山
 								 <spform:checkbox path="interest" value="看書" />看書
 								 <spform:checkbox path="interest" value="打球" />打球
