@@ -1,7 +1,9 @@
 package spring.mvc.session11.controller;
 
 import java.util.Arrays;
+import java.util.LinkedHashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import org.springframework.stereotype.Controller;
@@ -22,10 +24,13 @@ import spring.mvc.session11.entity.User;
 public class UserController {
 	
 	private List<User> users = new CopyOnWriteArrayList<>();
+	
+	// 供表單使用的參數列
 	private List<String> educationList = Arrays.asList("小學", "國中", "高中", "大學", "研究所");
 	private List<String> sexList = Arrays.asList("男", "女", "不提供");
 	private List<String> interestList = Arrays.asList("爬山", "看書", "打球", "飛控", "美食");		
-	
+	// 將表單使用的參數列收集成為一個 Map
+	private Map<String, List<String>> dataMap = new LinkedHashMap<>();
 	// 預設資料
 	{	
 		users.add(new User("Vincent", "2010-05-01", "大學", "男", new String[] {"飛控"}, "Test1"));
@@ -33,6 +38,11 @@ public class UserController {
 		users.add(new User("Helen", "2009-08-05", "研究所", "女", new String[] {"爬山"}, "Test3"));
 		users.add(new User("Jack", "2012-09-07", "大學", "男", new String[] {"爬山", "打球"}, "Test4"));
 		users.add(new User("Rose", "2011-12-09", "高中", "女", null, "Test5"));
+		
+		// 將表單使用的參數列收集成為一個 Map
+		dataMap.put("educationList", educationList);
+		dataMap.put("sexList", sexList);
+		dataMap.put("interestList", interestList);
 	}
 	
 	// 首頁
@@ -41,9 +51,7 @@ public class UserController {
 		model.addAttribute("_method", "POST");
 		model.addAttribute("submitButtonName", "新增");
 		model.addAttribute("users", users);
-		model.addAttribute("educationList", educationList);
-		model.addAttribute("sexList", sexList);
-		model.addAttribute("interestList", interestList);
+		model.addAttribute("dataMap", dataMap);
 		return "session11/user";
 	}
 	
@@ -59,9 +67,7 @@ public class UserController {
 		model.addAttribute("user", user);
 		model.addAttribute("index", index);
 		model.addAttribute("users", users);
-		model.addAttribute("educationList", educationList);
-		model.addAttribute("sexList", sexList);
-		model.addAttribute("interestList", interestList);
+		model.addAttribute("dataMap", dataMap);
 		switch (action) {
 			case "update":
 				model.addAttribute("_method", "PUT");
