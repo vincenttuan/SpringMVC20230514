@@ -57,7 +57,7 @@
 											<td nowrap>
 												${ fn:join(user.interest, " ")}
 											</td>
-											<td nowrap>${ userr.resume }</td>
+											<td nowrap>${ user.resume }</td>
 											<td nowrap>
 												<button type="button"
 														onclick=""
