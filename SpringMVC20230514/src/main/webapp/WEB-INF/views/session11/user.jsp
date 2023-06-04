@@ -91,12 +91,12 @@
 											<td nowrap>${ user.resume }</td>
 											<td nowrap>
 												<button type="button"
-														onclick=""
+														onclick="window.location.href='${pageContext.request.contextPath}/mvc/session11/user/${ status.index }?action=update';"
 														class="pure-button">修改</button>
 											</td>
 											<td nowrap>
 												<button type="button"
-														onclick=""
+														onclick="window.location.href='${pageContext.request.contextPath}/mvc/session11/user/${ status.index }?action=delete';"
 														class="pure-button">刪除</button>
 											</td>
 										</tr>
