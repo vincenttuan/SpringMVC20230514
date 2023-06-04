@@ -34,10 +34,8 @@
 								 </spform:select><p />
 							性別：<spform:radiobuttons path="sex" items="${ sexList }" />
 								 <p />
-							興趣：<spform:checkbox path="interest" value="爬山" />爬山
-								 <spform:checkbox path="interest" value="看書" />看書
-								 <spform:checkbox path="interest" value="打球" />打球
-								 <spform:checkbox path="interest" value="飛控" />飛控<p />
+							興趣：<spform:checkboxes path="interes" items="${ interestList }" />
+								 <p />
 							履歷：<spform:textarea path="resume" /><p />
 							<!-- 自訂表單元素 -->
 							<input type="hidden" name="_method" id="_method" value="${ _method }">

@@ -24,6 +24,7 @@ public class UserController {
 	private List<User> users = new CopyOnWriteArrayList<>();
 	private List<String> educationList = Arrays.asList("小學", "國中", "高中", "大學", "研究所");
 	private List<String> sexList = Arrays.asList("男", "女", "不提供");
+	private List<String> interestList = Arrays.asList("爬山", "看書", "打球", "飛控", "美食");		
 	
 	// 預設資料
 	{	
@@ -42,6 +43,7 @@ public class UserController {
 		model.addAttribute("users", users);
 		model.addAttribute("educationList", educationList);
 		model.addAttribute("sexList", sexList);
+		model.addAttribute("interestList", interestList);
 		return "session11/user";
 	}
 	
@@ -59,7 +61,7 @@ public class UserController {
 		model.addAttribute("users", users);
 		model.addAttribute("educationList", educationList);
 		model.addAttribute("sexList", sexList);
-		
+		model.addAttribute("interestList", interestList);
 		switch (action) {
 			case "update":
 				model.addAttribute("_method", "PUT");
