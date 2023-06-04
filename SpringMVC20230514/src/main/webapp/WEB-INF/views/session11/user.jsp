@@ -48,10 +48,15 @@
 											<td nowrap>${ status.index }</td>
 											<td nowrap>${ user.name }</td>
 											<td nowrap>${ user.age }</td>
-											<td nowrap>${ user.birth }</td>
+											<td nowrap>
+												<fmt:formatDate value="${ user.birth }" 
+																pattern="yyyy-MM-dd" />
+											</td>
 											<td nowrap>${ user.education }</td>
 											<td nowrap>${ user.sex }</td>
-											<td nowrap>${ user.interest }</td>
+											<td nowrap>
+												${ fn:join(user.interest, " ")}
+											</td>
 											<td nowrap>${ userr.resume }</td>
 											<td nowrap>
 												<button type="button"
