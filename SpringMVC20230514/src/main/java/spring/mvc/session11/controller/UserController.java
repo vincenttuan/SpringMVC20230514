@@ -4,6 +4,9 @@ import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import spring.mvc.session11.entity.User;
@@ -20,6 +23,15 @@ public class UserController {
 		users.add(new User("Helen", "2009-08-05", "研究所", "女", new String[] {"爬山"}, "Test3"));
 		users.add(new User("Jack", "2012-09-07", "大學", "男", new String[] {"爬山", "打球"}, "Test4"));
 		users.add(new User("Rose", "2011-12-09", "高中", "女", null, "Test5"));
+	}
+	
+	// 首頁
+	@GetMapping("/")
+	public String index(Model model, @ModelAttribute User user) {
+		model.addAttribute("_method", "POST");
+		model.addAttribute("submitButtonName", "新增");
+		model.addAttribute("users", users);
+		return "session11/user";
 	}
 	
 	
