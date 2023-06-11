@@ -1,7 +1,9 @@
 package spring.mvc.session14.controller;
 
 import java.util.List;
+import java.util.Map;
 import java.util.concurrent.CopyOnWriteArrayList;
+import java.util.stream.Collectors;
 
 import javax.validation.Valid;
 
@@ -29,6 +31,7 @@ public class StockController {
 	@GetMapping("/")
 	public String index(Model model, @ModelAttribute Stock stock) {
 		model.addAttribute("stocks", stocks);
+		model.addAttribute("avgCosts", getAvgCosts());
 		return "session14/stock";
 	}
 	
@@ -39,9 +42,19 @@ public class StockController {
 		// 驗證結果
 		if(result.hasErrors()) {
 			model.addAttribute("stocks", stocks);
+			model.addAttribute("avgCosts", getAvgCosts());
 			return "session14/stock";
 		}
 		stocks.add(stock);
 		return "redirect:./";
+	}
+	
+	// 相同股票代號，平均買進成本 ?
+	private Map<String, Double> getAvgCosts() {
+		Map<String, Double> averageCosts = stocks.stream()
+				.collect(Collectors.groupingBy(
+						Stock::getSymbol,
+						Collectors.averagingDouble(s -> s.getPrice() * s.getAmount() )));
+		return averageCosts;
 	}
 }
