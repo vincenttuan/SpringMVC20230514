@@ -39,6 +39,26 @@
 			</fieldset>
 		</spform:form>
 		
-		${ stocks }
+		<table class="pure-table pure-table-bordered">
+			<thead>
+				<tr>
+					<th>index</th>
+					<th>股號</th>
+					<th>價格</th>
+					<th>數量</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach varStatus="status" var="stock" items="${ stocks }">
+					<tr>
+						<td>${ status.index }</td>
+						<td>${ stock.symbol }</td>
+						<td>${ stock.price }</td>
+						<td>${ stock.amount }</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+		
 	</body>
 </html>
