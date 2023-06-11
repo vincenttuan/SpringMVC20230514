@@ -42,7 +42,7 @@
 				<spform:errors path="*" cssClass="error" />  
 			</fieldset>
 		</spform:form>
-		${ people }
+		
 		<table class="pure-table pure-table-bordered">
 			<thead>
 				<tr>
@@ -59,8 +59,10 @@
 						<td>${ status.index }</td>
 						<td>${ person.name }</td>
 						<td>${ person.age }</td>
-						<td>${ person.member }</td>
-						<td>${ person.birth }</td>
+						<td>${ (person.member)?'Y':'N' }</td>
+						<td>
+							<fmt:formatDate value="${ person.birth }" pattern="yyyy-MM-dd" />
+						</td>
 					</tr>
 				</c:forEach>
 			</tbody>
