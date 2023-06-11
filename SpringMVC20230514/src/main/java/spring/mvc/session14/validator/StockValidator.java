@@ -44,16 +44,16 @@ public class StockValidator implements Validator {
 			// 取得昨日收盤價(昨收)
 			Double previousClose = quotes.get(stock.getSymbol());
 			// 1.買進價格必須是昨日收盤價的±10%之間
-			if(stock.getPrice() < previousClose * 0.9 || stock.getPrice() > previousClose * 1.1 ) {
+			if(stock.getPrice() == null || stock.getPrice() < previousClose * 0.9 || stock.getPrice() > previousClose * 1.1 ) {
 				// API: void rejectValue(String field, String errorCode, Object[] errorArgs, String defaultMessage);
 				errors.rejectValue("price", "stock.price.range", new Object[] {previousClose * 0.9, previousClose * 1.1}, "stock.price.range");
 			}
 			// 2.買進股數必須大於或等於1000
-			if(stock.getAmount() < 1000) {
+			if(stock.getAmount() == null || stock.getAmount() < 1000) {
 				errors.rejectValue("amount", "stock.amount.notenough");
 			}
 			// 3.買進股數必須是1000的倍數(1000股 = 1張)
-			if(stock.getAmount() % 1000 != 0) {
+			if(stock.getAmount() == null || stock.getAmount() % 1000 != 0) {
 				errors.rejectValue("amount", "stock.amount.range");
 			}
 		}
