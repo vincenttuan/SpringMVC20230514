@@ -48,7 +48,11 @@
 				<tr>
 					<th>index</th>
 					<th>姓名</th>
-					<th>年齡</th>
+					<th>
+						<a href="${ pageContext.request.contextPath }/mvc/session13/person/?sort=asc">▲</a> 
+						年齡
+						<a href="${ pageContext.request.contextPath }/mvc/session13/person/?sort=desc">▼</a>
+					</th>
 					<th>會員</th>
 					<th>生日</th>
 				</tr>
