@@ -1,5 +1,6 @@
 package spring.mvc.session14.controller;
 
+import java.util.DoubleSummaryStatistics;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -62,18 +63,19 @@ public class StockController {
 	// Homework: 如何得到平均買進股價 ?
 	// Ex: ((550.0*2000) + (600.0*3000))/5000 = 580
 	private Map<String, Double> getAvgPrice() {
-		Map<String, Double> totalInvestmentPerStock = stocks.stream().collect(
-				Collectors.groupingBy(Stock::getSymbol, Collectors.summingDouble(s -> s.getPrice() * s.getAmount())));
-
-		Map<String, Integer> totalAmountPerStock = stocks.stream()
-				.collect(Collectors.groupingBy(Stock::getSymbol, Collectors.summingInt(Stock::getAmount)));
-
-		Map<String, Double> averageCostPerStock = new HashMap<>();
-
-		totalInvestmentPerStock.forEach((symbol, totalInvestment) -> {
-			double averageCost = totalInvestment / totalAmountPerStock.get(symbol);
-			averageCostPerStock.put(symbol, averageCost);
-		});
-		return averageCostPerStock;
+	    Map<String, DoubleSummaryStatistics> summaryStatistics = stocks.stream()
+	            .collect(Collectors.groupingBy(
+	                    Stock::getSymbol,
+	                    Collectors.summarizingDouble(s -> s.getPrice() * s.getAmount())
+	            ));
+	    
+	    Map<String, Double> averageCostPerStock = summaryStatistics.entrySet().stream()
+	            .collect(Collectors.toMap(
+	                Map.Entry::getKey,
+	                e -> e.getValue().getSum() / e.getValue().getCount()
+	            ));
+	    
+	    return averageCostPerStock;
 	}
+
 }
