@@ -39,8 +39,9 @@
 			</fieldset>
 		</spform:form>
 		
-		${ avgCosts }
-		
+		平均每股買進價格：
+		${ avgPrice }
+		<p />
 		<table class="pure-table pure-table-bordered">
 			<thead>
 				<tr>
