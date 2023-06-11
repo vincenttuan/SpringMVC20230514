@@ -25,7 +25,7 @@
 				會員：<spform:radiobutton path="member" value="true"/> 會員
 					 <spform:radiobutton path="member" value="false"/> 非會員
 					 <p />
-				生日：<spform:input path="bitrh" type="date"/>
+				生日：<spform:input path="birth" type="date"/>
 					 <p />
 				<button type="sumbit" class="pure-button bure-button-primary">新增</button>
 				<p />
