@@ -10,6 +10,11 @@
 		<link rel="stylesheet" href="https://unpkg.com/purecss@2.0.6/build/pure-min.css">
 		<meta charset="UTF-8">
 		<title>Person Form (Valid)</title>
+		<style type="text/css">
+			.error {
+				color: #FF0000
+			}
+		</style>
 	</head>
 	<body style="padding: 15px">
 		<spform:form class="pure-form"
@@ -19,18 +24,22 @@
 			<fieldset>
 				<legend>Person Form (Valid)</legend>
 				姓名：<spform:input path="name" />
+					 <spform:errors path="name" cssClass="error" />
 					 <p />
 				年齡：<spform:input path="age"/>
+					 <spform:errors path="age" cssClass="error" />
 					 <p />		 
 				會員：<spform:radiobutton path="member" value="true"/> 會員
 					 <spform:radiobutton path="member" value="false"/> 非會員
+					 <spform:errors path="member" cssClass="error" />
 					 <p />
 				生日：<spform:input path="birth" type="date"/>
+					 <spform:errors path="birth" cssClass="error" />
 					 <p />
 				<button type="sumbit" class="pure-button bure-button-primary">新增</button>
 				<p />
 				<!-- 列出所有錯誤訊息 -->
-				<spform:errors path="*"></spform:errors>  
+				<spform:errors path="*" cssClass="error" />  
 			</fieldset>
 		</spform:form>
 		
