@@ -57,4 +57,8 @@ public class StockController {
 						Collectors.averagingDouble(s -> s.getPrice() * s.getAmount() )));
 		return averageCosts;
 	}
+	
+	// Homework: 如何得到平均買進股價 ?
+	// Ex: ((550.0*2000) + (600.0*3000))/5000 = 580
+	
 }
