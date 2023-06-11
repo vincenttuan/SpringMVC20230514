@@ -35,7 +35,7 @@
 					 <p />
 				<button type="sumbot" class="pure-button pure-button-primary">新增</button>
 				<p />
-				<spform:errors path="*" />
+				<spform:errors path="*" cssClass="error" />
 			</fieldset>
 		</spform:form>
 		
