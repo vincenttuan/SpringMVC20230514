@@ -3,12 +3,14 @@ package spring.mvc.session14.validator;
 import java.util.LinkedHashMap;
 import java.util.Map;
 
+import org.springframework.stereotype.Component;
 import org.springframework.validation.Errors;
 import org.springframework.validation.ValidationUtils;
 import org.springframework.validation.Validator;
 
 import spring.mvc.session14.entity.Stock;
 
+@Component
 public class StockValidator implements Validator {
 	// 所有股票商品資訊
 	private static Map<String, Double> quotes = new LinkedHashMap<>();
