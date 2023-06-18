@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import spring.mvc.session15.entity.Job;
@@ -72,7 +73,18 @@ public class JobController {
 			session.setAttribute("num", getPageCount());
 		}
 		return "redirect:./";
-		
+	}
+	
+	@PutMapping("/")
+	public String update(@ModelAttribute @Valid Job job, BindingResult result, Model model, HttpSession session) {
+		if(result.hasErrors()) {
+			model.addAttribute("_method", "PUT");
+			setBaseModelAttribute(model, session);
+			return "session15/job";
+		}
+		// 修改
+		jobDao.update(job);
+		return "redirect:./";
 	}
 	
 	// 取得總頁數
