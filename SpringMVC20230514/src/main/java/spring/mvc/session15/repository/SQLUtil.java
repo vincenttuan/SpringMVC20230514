@@ -1,7 +1,7 @@
 package spring.mvc.session15.repository;
 
 // SQL 語句集中管理
-public class SQLUtil {
+public interface SQLUtil {
 	// employee table
 	public static final String ADD_EMPLOYEE_SQL = "insert into employee (ename, salary) values(?, ?)"; 
 	public static final String UPT_EMPLOYEE_SQL = "update employee set ename=?, salary=? where eid=?"; 
