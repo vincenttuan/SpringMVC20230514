@@ -16,5 +16,8 @@
 	Session 14:
 	<a href="${pageContext.request.contextPath}/mvc/session14/stock/">/mvc/session14/stock/</a>
 	<p />
+	Session 15:
+	<a href="${pageContext.request.contextPath}/mvc/session15/job/">/mvc/session15/job/</a>
+	<p />
 </body>
 </html>
