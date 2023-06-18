@@ -90,7 +90,7 @@ public class JobController {
 	
 	@DeleteMapping("/")
 	public String delete(Job job, HttpSession session) {
-		Integer jid = job.getJid();
+		Integer jid = job.getJid(); 
 		jobDao.delete(jid);
 		
 		try {
