@@ -12,7 +12,7 @@ import org.springframework.format.annotation.DateTimeFormat;
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class Employee {
-	// 資料表的主鍵
+	// 資料表的主鍵(PK)
 	private Integer eid;
 	
 	@Size(min = 2, max = 50, message = "{employee.ename.size}")

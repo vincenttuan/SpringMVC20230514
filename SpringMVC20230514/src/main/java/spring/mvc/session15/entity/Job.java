@@ -1,11 +1,16 @@
 package spring.mvc.session15.entity;
 
+import javax.validation.constraints.Size;
+
 public class Job {
 	
+	// 資料表的主鍵(PK)
 	private Integer jid;
 	
+	@Size(min = 2, max = 50, message = "{job.jname.size}")
 	private String jname;
 	
+	// 資料表的外鍵(FK)
 	private Integer eid;
 	
 	// 手動加入: 一個工作會對應到一個員工
