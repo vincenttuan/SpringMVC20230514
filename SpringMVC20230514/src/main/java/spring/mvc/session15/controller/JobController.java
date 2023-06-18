@@ -65,6 +65,12 @@ public class JobController {
 		// 新增資料
 		jobDao.add(job);
 		
+		// 判斷使用者是否在分頁狀態
+		String sessionNum = session.getAttribute("num") + "";
+		if(sessionNum.length() > 0) {
+			// 設定目前最大的 num
+			session.setAttribute("num", getPageCount());
+		}
 		return "redirect:./";
 		
 	}
