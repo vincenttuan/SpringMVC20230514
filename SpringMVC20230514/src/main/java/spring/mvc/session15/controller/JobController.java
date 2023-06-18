@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -84,6 +85,24 @@ public class JobController {
 		}
 		// 修改
 		jobDao.update(job);
+		return "redirect:./";
+	}
+	
+	@DeleteMapping("/")
+	public String delete(Job job, HttpSession session) {
+		Integer jid = job.getJid();
+		jobDao.delete(jid);
+		
+		try {
+			int num = Integer.parseInt(session.getAttribute("num") + "");
+			int pageCount = getPageCount();
+			if(num > pageCount) {
+				session.setAttribute("num", pageCount);
+			}
+		} catch (Exception e) {
+			
+		}
+		
 		return "redirect:./";
 	}
 	
