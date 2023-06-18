@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import spring.mvc.session15.entity.Job;
+import spring.mvc.session15.repository.EmployeeDao;
 import spring.mvc.session15.repository.JobDao;
 
 @Controller
@@ -17,6 +18,9 @@ public class JobController {
 	
 	@Autowired
 	private JobDao jobDao;
+	
+	@Autowired
+	private EmployeeDao employeeDao;
 	
 	// 取得總頁數
 	private int getPageCount() {
@@ -29,6 +33,7 @@ public class JobController {
 	@GetMapping("/")
 	public String index(@ModelAttribute Job job, Model model)  {
 		model.addAttribute("_method", "POST");
+		model.addAttribute("employees", employeeDao.query());
 		model.addAttribute("jobs", jobDao.query());
 		model.addAttribute("pageCount", getPageCount());
 		return "session15/job";
@@ -40,6 +45,7 @@ public class JobController {
 			return "redirect:../";
 		}
 		model.addAttribute("_method", "POST");
+		model.addAttribute("employees", employeeDao.query());
 		model.addAttribute("jobs", jobDao.queryPage(pageNo));
 		model.addAttribute("pageCount", getPageCount());
 		return "session15/job";
