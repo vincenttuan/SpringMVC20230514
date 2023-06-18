@@ -33,6 +33,7 @@ public class JobController {
 	@GetMapping("/")
 	public String index(@ModelAttribute Job job, Model model)  {
 		model.addAttribute("_method", "POST");
+		
 		model.addAttribute("employees", employeeDao.query());
 		model.addAttribute("jobs", jobDao.query());
 		model.addAttribute("pageCount", getPageCount());
@@ -45,10 +46,23 @@ public class JobController {
 			return "redirect:../";
 		}
 		model.addAttribute("_method", "POST");
+		
 		model.addAttribute("employees", employeeDao.query());
 		model.addAttribute("jobs", jobDao.queryPage(pageNo));
 		model.addAttribute("pageCount", getPageCount());
 		return "session15/job";
 	}
+	
+	@GetMapping("/{jid}")
+	public String get(@PathVariable("jid") Integer jid, Model model) {
+		model.addAttribute("_method", "PUT");
+		model.addAttribute("job", jobDao.get(jid));
+		
+		model.addAttribute("employees", employeeDao.query());
+		model.addAttribute("jobs", jobDao.query());
+		model.addAttribute("pageCount", getPageCount());
+		return "session15/job";
+	}
+	
 	
 }
