@@ -73,7 +73,14 @@ public class JobDaoImpl implements JobDao {
 		// offset: 要從哪一筆紀錄開始查詢
 		int offset = (pageNo - 1) * LIMIT;
 		String sql = SQLUtil.QUERY_PAGE_JOB_SQL;
-		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<Job>(Job.class), LIMIT, offset);
+		List<Job> jobs = jdbcTemplate.query(sql, new BeanPropertyRowMapper<Job>(Job.class), LIMIT, offset);
+		// 將 jobs 裡面的每一筆紀錄都組合 Employee
+		for(Job job : jobs) {
+			int eid = job.getEid();
+			Employee emp = employeeDao.get(eid);
+			job.setEmployee(emp);
+		}
+		return jobs;
 	}
 	
 	
