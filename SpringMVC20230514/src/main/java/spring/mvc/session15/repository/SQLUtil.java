@@ -1,5 +1,6 @@
 package spring.mvc.session15.repository;
 
+// SQL 語句集中管理
 public class SQLUtil {
 	// employee table
 	public static final String ADD_EMPLOYEE_SQL = "insert into employee (ename, salary) values(?, ?)"; 
