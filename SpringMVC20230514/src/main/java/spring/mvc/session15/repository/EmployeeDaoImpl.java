@@ -24,7 +24,7 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	@Override
 	public int update(Employee emp) {
 		String sql = SQLUtil.UPT_EMPLOYEE_SQL;
-		return jdbcTemplate.update(emp.getEname(), emp.getSalary(), emp.getEid());
+		return jdbcTemplate.update(sql, emp.getEname(), emp.getSalary(), emp.getEid());
 	}
 
 	@Override
