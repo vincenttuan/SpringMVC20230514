@@ -36,7 +36,15 @@ public class DivisionController {
 		// 那一頁發生問題 ?
 		String referer = request.getHeader("Referer");
 		model.addAttribute("referer", referer);
-		model.addAttribute("ex", ex);
+		switch (ex.getClass().getSimpleName()) {
+			case "BindException":
+				model.addAttribute("ex", "使用者輸入資料格式不正確");
+				break;
+			case "ArithmeticException":
+				model.addAttribute("ex", "數學錯誤例外:分母不可為 0");
+				break;
+		}
+		//model.addAttribute("ex", ex.getClass().getSimpleName() + ", " + ex.getMessage());
 		return "session17/error";
 	}
 	
