@@ -7,10 +7,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import spring.mvc.session15.entity.Employee;
@@ -74,6 +76,38 @@ public class EmployeeController {
 			// 設定目前最大的 num
 			session.setAttribute("num", getPageCount());
 		}
+		return "redirect:./";
+	}
+	
+	// 修改 Employee
+	@PutMapping("/")
+	public String update(@ModelAttribute @Valid Employee employee, BindingResult result, Model model, HttpSession session) {
+		if(result.hasErrors()) {
+			model.addAttribute("_method", "PUT");
+			setBaseModelAttribute(model, session);
+			return "session15/employee";
+		}
+		// 修改
+		employeeDao.update(employee);
+		return "redirect:./";
+	}
+	
+	// 刪除 Job
+	@DeleteMapping("/")
+	public String delete(Employee employee, HttpSession session) {
+		Integer eid = employee.getEid(); 
+		employeeDao.delete(eid);
+		
+		try {
+			int num = Integer.parseInt(session.getAttribute("num") + "");
+			int pageCount = getPageCount();
+			if(num > pageCount) {
+				session.setAttribute("num", pageCount);
+			}
+		} catch (Exception e) {
+			
+		}
+		
 		return "redirect:./";
 	}
 	
