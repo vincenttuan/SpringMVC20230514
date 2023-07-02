@@ -1,11 +1,15 @@
 package spring.mvc.session17.controller;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.validation.BindException;
+import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import jakarta.servlet.http.HttpServletRequest;
 import spring.mvc.session17.entity.Division;
 
 @Controller
@@ -23,5 +27,16 @@ public class DivisionController {
 		division.setResult(result);
 		return "session17/division";
 	}
+	
+	// 捕獲使用者輸入資料格式不正確的例外：BindException
+	@ExceptionHandler({BindException.class})
+	public String catchException(Exception ex, Model model, HttpServletRequest request) {
+		// 那一頁發生問題 ?
+		String referer = request.getHeader("Referer");
+		model.addAttribute("referer", referer);
+		model.addAttribute("ex", ex);
+		return "session17/error";
+	}
+	
 	
 }
