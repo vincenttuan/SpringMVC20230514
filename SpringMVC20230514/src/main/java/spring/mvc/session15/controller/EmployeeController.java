@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -29,6 +30,19 @@ public class EmployeeController {
 	
 	@GetMapping("/")
 	public String index(@ModelAttribute Employee employee, Model model, HttpSession session) {
+		model.addAttribute("_method", "POST");
+		setBaseModelAttribute(model, session);
+		return "session15/employee";
+	}
+	
+	// 分頁查詢
+	@GetMapping("/page/{pageNo}")
+	public String page(@PathVariable("pageNo") int pageNo, @ModelAttribute Employee employee, Model model, HttpSession session) {
+		if(pageNo < 0) {
+			session.setAttribute("num", ""); // 將 session 內容清空
+			return "redirect:../";
+		}
+		session.setAttribute("num", pageNo); // 存入目前使用者所在 page
 		model.addAttribute("_method", "POST");
 		setBaseModelAttribute(model, session);
 		return "session15/employee";

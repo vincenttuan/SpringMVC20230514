@@ -30,6 +30,7 @@ public class JobController {
 	@Autowired
 	private EmployeeDao employeeDao;
 	
+	// 首頁
 	@GetMapping("/")
 	public String index(@ModelAttribute Job job, Model model, HttpSession session)  {
 		model.addAttribute("_method", "POST");
@@ -37,6 +38,7 @@ public class JobController {
 		return "session15/job";
 	}
 	
+	// 分頁查詢
 	@GetMapping("/page/{pageNo}")
 	public String page(@PathVariable("pageNo") int pageNo, @ModelAttribute Job job, Model model, HttpSession session) {
 		if(pageNo < 0) {
@@ -49,6 +51,7 @@ public class JobController {
 		return "session15/job";
 	}
 	
+	// 單筆查詢
 	@GetMapping("/{jid}")
 	public String get(@PathVariable("jid") Integer jid, Model model, HttpSession session) {
 		model.addAttribute("_method", "PUT");
