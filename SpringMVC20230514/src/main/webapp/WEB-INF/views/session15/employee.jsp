@@ -158,7 +158,7 @@
 								<c:forEach var="emp" items="${ employees }">
 									<tr>
 										<td>
-											<a href="./${ emp.eid }" title="按我一下可以修改">
+											<a href="${ pageContext.request.contextPath }/mvc/session15/employee/${ emp.eid }" title="按我一下可以修改">
 												${ emp.eid }
 											</a>
 										</td>
