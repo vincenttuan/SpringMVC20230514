@@ -17,12 +17,12 @@ import spring.mvc.session17.entity.Division;
 @RequestMapping("/session17/division")
 public class DivisionController {
 	
-	@GetMapping
+	@GetMapping("/")
 	public String index(@ModelAttribute Division division) {
 		return "session17/division";
 	}
 	
-	@PostMapping
+	@PostMapping("/")
 	public String operation(@ModelAttribute Division division) {
 		int result = division.getX() / division.getY();
 		division.setResult(result);
