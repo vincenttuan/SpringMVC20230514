@@ -42,14 +42,21 @@ public class EmployeeController {
 	private void setBaseModelAttribute(Model model, HttpSession session) {
 		// 取得目前使用者所在的分頁
 		String sessionNum = session.getAttribute("num") + "";
+		// 目前總頁數
+		int pageCount = getPageCount();
 		if(sessionNum.length() > 0 && !sessionNum.equals("null")) {
 			int num = Integer.parseInt(sessionNum);
+			// 判斷 session 中的 num 是否大於實際總頁數
+			if(num > pageCount) {
+				num = pageCount;
+				session.setAttribute("num", num);
+			}
 			model.addAttribute("employees", employeeDao.queryPage(num));
 		} else {
 			model.addAttribute("employees", employeeDao.query());
 		}
 		model.addAttribute("jobs", jobDao.query());
-		model.addAttribute("pageCount", getPageCount());
+		model.addAttribute("pageCount", pageCount);
 	}
 	
 }
