@@ -28,4 +28,7 @@ public interface JobDao {
 	
 	// 多筆查詢-分頁
 	List<Job> queryPage(int pageNo);
+	
+	// 多筆查詢-根據 eid 查詢工作
+	List<Job> queryByEid(Integer eid);
 }

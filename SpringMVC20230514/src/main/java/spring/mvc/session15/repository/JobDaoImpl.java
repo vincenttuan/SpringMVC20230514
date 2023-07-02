@@ -49,7 +49,7 @@ public class JobDaoImpl implements JobDao {
 		String sql = SQLUtil.COUNT_JOB_SQL;
 		return jdbcTemplate.queryForObject(sql, Integer.class);
 	}
-
+	
 	@Override
 	public List<Job> query() {
 		String sql = SQLUtil.QUERY_JOB_SQL; // 不分頁查詢
@@ -80,6 +80,14 @@ public class JobDaoImpl implements JobDao {
 			Employee emp = employeeDao.get(eid);
 			job.setEmployee(emp);
 		}
+		return jobs;
+	}
+	
+	// 多筆查詢-根據 eid 查詢工作
+	@Override
+	public List<Job> queryByEid(Integer eid) {
+		String sql = SQLUtil.QUERY_JOB_BY_EID_SQL;
+		List<Job> jobs = jdbcTemplate.query(sql, new BeanPropertyRowMapper<Job>(Job.class));
 		return jobs;
 	}
 	

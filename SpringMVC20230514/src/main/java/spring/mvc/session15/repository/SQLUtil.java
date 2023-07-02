@@ -20,6 +20,6 @@ public class SQLUtil {
 	public static final String COUNT_JOB_SQL = "select count(*) from job"; 
 	public static final String QUERY_JOB_SQL = "select j.jid, j.jname, j.eid from job j";
 	public static final String QUERY_PAGE_JOB_SQL = "select j.jid, j.jname, j.eid from job j limit ? offset ?";
-	
+	public static final String QUERY_JOB_BY_EID_SQL = "select jid, jname, eid from job where eid=?";
 	
 }

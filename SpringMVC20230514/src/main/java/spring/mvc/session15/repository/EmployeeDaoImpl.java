@@ -5,15 +5,20 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BeanPropertyRowMapper;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
 
 import spring.mvc.session15.entity.Employee;
+import spring.mvc.session15.entity.Job;
 
 @Repository
 public class EmployeeDaoImpl implements EmployeeDao {
 	
 	@Autowired
 	private JdbcTemplate jdbcTemplate;
+	
+	@Autowired
+	private JobDao jobDao;
 	
 	@Override
 	public int add(Employee emp) {
@@ -48,7 +53,23 @@ public class EmployeeDaoImpl implements EmployeeDao {
 	@Override
 	public List<Employee> query() {
 		String sql = SQLUtil.QUERY_EMPLOYEE_SQL;
-		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<Employee>(Employee.class));
+		// 自行將每一筆紀錄的 Employee 組合 Job
+		RowMapper<Employee> rm = (rs, rowNum) -> {
+			Employee employee = new Employee();
+			employee.setEid(rs.getInt("eid"));
+			employee.setEname(rs.getString("ename"));
+			employee.setSalary(rs.getInt("salary"));
+			employee.setCreatetime(rs.getTimestamp("createtime"));
+			
+			// 查詢該筆員工有哪些工作 ?
+			List<Job> jobs = jobDao.queryByEid(employee.getEid());
+			
+			// 組合 Jobs
+			employee.setJobs(jobs);
+			return employee;
+		};
+		
+		return jdbcTemplate.query(sql, rm);
 	}
 
 	@Override
