@@ -73,7 +73,7 @@
 				title: 'Jobs'
 			};
 		
-			var chart = new google.visualization.BarChart(document.getElementById('line_chart'));
+			var chart = new google.visualization.ColumnChart(document.getElementById('line_chart'));
 			chart.draw(data, options);	    	
 	    }
 	</script>
