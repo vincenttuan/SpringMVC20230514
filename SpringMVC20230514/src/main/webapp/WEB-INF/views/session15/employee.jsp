@@ -145,7 +145,8 @@
 							<a href="${ pageContext.request.contextPath }/mvc/session15/employee/page/-1">全部查詢</a> | 
 							分頁查詢：
 							<c:forEach var="num" begin="1" end="${ pageCount }">
-								<a href="${ pageContext.request.contextPath }/mvc/session15/employee/page/${ num }">${ num }</a>&nbsp;
+								<a style="${ sessionScope.num == num ? 'text-decoration: none':''  }" 
+								   href="${ pageContext.request.contextPath }/mvc/session15/employee/page/${ num }">${ num }</a>&nbsp;
 							</c:forEach>
 						</legend>
 						<table class="pure-table pure-table-bordered" style="width: 100%;">
