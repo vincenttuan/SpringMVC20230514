@@ -87,7 +87,7 @@ public class JobDaoImpl implements JobDao {
 	@Override
 	public List<Job> queryByEid(Integer eid) {
 		String sql = SQLUtil.QUERY_JOB_BY_EID_SQL;
-		List<Job> jobs = jdbcTemplate.query(sql, new BeanPropertyRowMapper<Job>(Job.class));
+		List<Job> jobs = jdbcTemplate.query(sql, new BeanPropertyRowMapper<Job>(Job.class), eid);
 		return jobs;
 	}
 	
