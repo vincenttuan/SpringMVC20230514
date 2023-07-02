@@ -16,7 +16,7 @@ public class MyHandlerExceptionResolver implements HandlerExceptionResolver {
 			Exception ex) {
 		ModelAndView mv = new ModelAndView();
 		mv.addObject("referer", request.getHeader("Referer"));
-		mv.addObject("ex", "全局異常捕捉：" + ex);
+		mv.addObject("ex", "HandlerExceptionResolver 全局異常捕捉：" + ex);
 		mv.setViewName("session17/error");
 		return mv;
 	}
