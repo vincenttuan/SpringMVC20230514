@@ -45,7 +45,7 @@
 			};
 			
 			// 長條圖(縱)
-			var columnChart = new google.visualization.ColumnChart(document.getElementById('column_chart'));
+			var columnChart = new google.visualization.LineChart(document.getElementById('column_chart'));
 			columnChart.draw(data, options);
 			// 圓餅圖
 			var pieChart = new google.visualization.PieChart(document.getElementById('pie_chart'));
@@ -73,7 +73,7 @@
 				title: 'Jobs'
 			};
 		
-			var chart = new google.visualization.LineChart(document.getElementById('line_chart'));
+			var chart = new google.visualization.BarChart(document.getElementById('line_chart'));
 			chart.draw(data, options);	    	
 	    }
 	</script>
