@@ -20,7 +20,6 @@
 				<button type="submit" class="pure-button">返回</button>
 			</fieldset>
 		</form>
-		<p />
-		${ globalData.copyright } ${ globalData.email }	
+			
 	</body>
 </html>
