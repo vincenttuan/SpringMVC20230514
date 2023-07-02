@@ -31,7 +31,8 @@ public class DivisionController {
 	
 	// 捕獲使用者輸入資料格式不正確的例外：BindException
 	// 數學錯誤例外：ArithmeticException
-	@ExceptionHandler({BindException.class, ArithmeticException.class})
+	//@ExceptionHandler({BindException.class, ArithmeticException.class})
+	@ExceptionHandler({ArithmeticException.class})
 	public String catchException(Exception ex, Model model, HttpServletRequest request) {
 		// 那一頁發生問題 ?
 		String referer = request.getHeader("Referer");
