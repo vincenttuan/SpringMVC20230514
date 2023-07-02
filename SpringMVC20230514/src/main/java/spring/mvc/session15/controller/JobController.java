@@ -57,6 +57,7 @@ public class JobController {
 		return "session15/job";
 	}
 	
+	// 新增 Job
 	@PostMapping("/")
 	public String add(@ModelAttribute @Valid Job job, BindingResult result, Model model, HttpSession session) {
 		if(result.hasErrors()) {
@@ -76,6 +77,7 @@ public class JobController {
 		return "redirect:./";
 	}
 	
+	// 修改 Job
 	@PutMapping("/")
 	public String update(@ModelAttribute @Valid Job job, BindingResult result, Model model, HttpSession session) {
 		if(result.hasErrors()) {
@@ -88,6 +90,7 @@ public class JobController {
 		return "redirect:./";
 	}
 	
+	// 刪除 Job
 	@DeleteMapping("/")
 	public String delete(Job job, HttpSession session) {
 		Integer jid = job.getJid(); 
