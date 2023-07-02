@@ -14,6 +14,10 @@ import org.springframework.web.bind.annotation.ExceptionHandler;
  * @ModelAttribute 用於全局資料參數的定義
  * @InitBinder 初始化繫結器，用於資料繫結、設定資料轉換器等...
  * 
+ * 例外發生處理順序：
+ * 	@Controller > @ControllerAdvice > HandlerExceptionResolver
+ * 	會先給 @Controller 來處理，若 @Controller 無法處理就會給 @ControllerAdvice 來處理
+ *  若 @ControllerAdvice 無法處理最後才會給 HandlerExceptionResolver 來處理
  * */
 @ControllerAdvice
 public class GlobalController {
