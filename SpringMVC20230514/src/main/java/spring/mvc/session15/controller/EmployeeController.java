@@ -48,6 +48,15 @@ public class EmployeeController {
 		return "session15/employee";
 	}
 	
+	// 單筆查詢
+	@GetMapping("/{eid}")
+	public String get(@PathVariable("eid") Integer eid, Model model, HttpSession session) {
+		model.addAttribute("_method", "PUT");
+		model.addAttribute("employee", employeeDao.get(eid));
+		setBaseModelAttribute(model, session);
+		return "session15/employee";
+	}
+	
 	// 新增 Employee
 	@PostMapping("/")
 	public String add(@ModelAttribute @Valid Employee employee, BindingResult result, Model model, HttpSession session) {
