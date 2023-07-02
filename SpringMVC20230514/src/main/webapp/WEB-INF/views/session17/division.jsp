@@ -28,6 +28,6 @@
 		</spform:form>
 		執行結果：${ division.result }
 		<p />
-				
+		${ globalData.copyright } ${ globalData.email }	 	
 	</body>
 </html>
