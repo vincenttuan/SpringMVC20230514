@@ -77,7 +77,17 @@ public class EmployeeDaoImpl implements EmployeeDao {
 		// offset: 要從哪一筆紀錄開始查詢
 		int offset = (pageNo - 1) * LIMIT;
 		String sql = SQLUtil.QUERY_PAGE_EMPLOYEE_SQL;
-		return jdbcTemplate.query(sql, new BeanPropertyRowMapper<Employee>(Employee.class), LIMIT, offset);
+		List<Employee> employees = jdbcTemplate.query(sql, new BeanPropertyRowMapper<Employee>(Employee.class), LIMIT, offset);
+		
+		// 將 employees 裡面的每一筆紀錄都組合 jobs
+		for(Employee employee : employees) {
+			// 查詢該筆員工有哪些工作 ?
+			List<Job> jobs = jobDao.queryByEid(employee.getEid());
+			// 組合 jobs
+			employee.setJobs(jobs);
+		}
+		
+		return employees;
 	}
 
 }
