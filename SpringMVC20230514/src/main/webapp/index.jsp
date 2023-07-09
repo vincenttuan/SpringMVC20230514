@@ -24,6 +24,8 @@
 	<a href="${pageContext.request.contextPath}/mvc/session17/division/">/mvc/session17/division/</a>
 	<br/>
 	<a href="${pageContext.request.contextPath}/mvc/session17/book_author/">/mvc/session17/book_author/</a>
+	<br/>
+	<a href="${pageContext.request.contextPath}/mvc/session17/product_master/">/mvc/session17/product_master/</a>
 	<p />
 </body>
 </html>
