@@ -23,13 +23,13 @@ public interface PersonRepository extends JpaRepository<Person, Long> {
 	
 	// 2. name 是 XX 的開頭以及 id >= 值
 	// Where name like ? and id >= ?
-	List<Person> getByNameStartingWithAndIdGreaterThenEqual(String name, Long id);
+	List<Person> getByNameStartingWithAndIdGreaterThanEqual(String name, Long id);
 	
 	// 3. Where id in (?, ?, ?, ...)
 	List<Person> getByIdIn(List<Long> ids);
 	
 	// 4. Where birth < ?
-	List<Person> getByBirthLessThen(Date birth);
+	List<Person> getByBirthLessThan(Date birth);
 	
 	// 5. Where birth between ?(含) and ?(含)
 	List<Person> getByBirthBetween(Date birthBegin, Date birthEnd);

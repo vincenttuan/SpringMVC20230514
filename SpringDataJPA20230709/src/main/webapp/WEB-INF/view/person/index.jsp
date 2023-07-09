@@ -14,7 +14,7 @@
 	<form:form class="pure-form"
 				modelAttribute="person"
 				method="post"
-				action="${ requestContext.request.contextPath }/mvc/person/">
+				action="${ pageContext.request.contextPath }/mvc/person/">
 		<fieldset>
 			<legend>Person 表單</legend>
 			<form:input path="id" readonly="true" /><p />
