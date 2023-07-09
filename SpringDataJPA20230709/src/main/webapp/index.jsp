@@ -8,5 +8,7 @@
 </head>
 <body>
 	Spring Web JPA
+	<p>
+	<a href="mvc/person/">mvc/person/</a>
 </body>
 </html>
