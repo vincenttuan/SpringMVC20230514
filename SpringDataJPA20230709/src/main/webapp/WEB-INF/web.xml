@@ -4,7 +4,7 @@
 	xmlns="http://xmlns.jcp.org/xml/ns/javaee"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd">
-	<display-name>SpringDataJPA20210906</display-name>
+	<display-name>SpringDataJPA20230709</display-name>
 	<welcome-file-list>
 		<welcome-file>index.html</welcome-file>
 		<welcome-file>index.htm</welcome-file>
