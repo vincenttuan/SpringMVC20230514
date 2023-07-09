@@ -30,13 +30,11 @@ public class BookAndAuthorController {
 	}
 	
 	@PostMapping("/")
-	public String add(@ModelAttribute("a") Author author, @ModelAttribute("b") Book book, Model model) {
+	public String add(@ModelAttribute("a") Author author, @ModelAttribute("b") Book book) {
 		books.add(book);
 		authors.add(author);
 		
-		model.addAttribute("books", books);
-		model.addAttribute("authors", authors);
-		return "session17/book_author";
+		return "redirect:./";
 	}
 	
 }
