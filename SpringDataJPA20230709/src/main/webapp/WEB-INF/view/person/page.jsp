@@ -17,13 +17,13 @@
 		<fieldset>
 			<legend>Person page 分頁</legend>
 			頁數：
-			<section name="no" onchange="this.form.submit()">
+			<select name="no" onchange="this.form.submit()">
 				<c:forEach var="no" begin="0" end="${ totalPage - 1 }">
 					<option value="${ no }" ${ no == pageNo ? "selected" : "" } >
 						${ no + 1 }
 					</option>
 				</c:forEach>
-			</section>
+			</select>
 		</fieldset>
 		
 	</form:form>
