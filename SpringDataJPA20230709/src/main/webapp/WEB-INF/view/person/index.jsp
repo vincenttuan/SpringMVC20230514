@@ -28,6 +28,21 @@
 		
 	</form:form>
 	<!-- Person 列表 -->
+	<form:form class="pure-form"
+				method="get"
+				action="${ pageContext.request.contextPath }/mvc/person/page2">
+		<fieldset>
+			<legend>Person page 分頁</legend>
+			頁數：
+			<select name="no" onchange="this.form.submit()">
+				<c:forEach var="no" begin="0" end="${ totalPage - 1 }">
+					<option value="${ no }" ${ no == pageNo ? "selected" : "" } >
+						${ no + 1 }
+					</option>
+				</c:forEach>
+			</select>
+		</fieldset>
+	</form:form>
 	<form class="pure-form">
 		<fieldset>Person List</fieldset>
 		<table class="pure-table pure-table-bordered">

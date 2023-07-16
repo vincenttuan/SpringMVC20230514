@@ -2,6 +2,8 @@ package com.spring.mvc.single.controller;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -28,17 +30,17 @@ public class PersonController {
 	private PersonRepository personRepository;
 	
 	@GetMapping("/")
-	public String index(@ModelAttribute Person person, Model model) {
-		List<Person> persons = personRepository.findAll();
+	public String index(@ModelAttribute Person person, Model model, HttpSession httpSession) {
+		List<Person> persons = queryPagePersons(httpSession); // personRepository.findAll();
 		model.addAttribute("_method", "POST");
 		model.addAttribute("persons", persons);
 		return "person/index";
 	}
 	
 	@GetMapping("/{id}")
-	public String getPersonById(@PathVariable Long id, Model model) {
+	public String getPersonById(@PathVariable Long id, Model model, HttpSession httpSession) {
 		Person person = personRepository.findOne(id);
-		List<Person> persons = personRepository.findAll();
+		List<Person> persons = queryPagePersons(httpSession); // personRepository.findAll();
 		model.addAttribute("_method", "PUT");
 		model.addAttribute("person", person);
 		model.addAttribute("persons", persons);
@@ -83,8 +85,34 @@ public class PersonController {
 		model.addAttribute("persons", persons);
 		model.addAttribute("pageNo", pageNo);
 		model.addAttribute("totalPage", page.getTotalPages());
-		
 		return "person/page";
+	}
+	
+	// 範例路徑：/page2, /page2?no=1, /page2?no=5 etc...
+	@GetMapping("/page2")
+	public String page2(@RequestParam(name = "no", required = false, defaultValue = "0") Integer no, HttpSession httpSession) {
+		httpSession.setAttribute("pageNo", no);
+		// 寫入 session
+		return "redirect:/mvc/person/";
+	}
+	
+	private List<Person> queryPagePersons(HttpSession httpSession) {
+		int pageNo = 0;
+		Object pageObj = httpSession.getAttribute("pageNo");
+		if(pageObj instanceof Integer) {
+			pageNo = (Integer)pageObj;
+		}
+		int pageSize = 5;
+		// 排序
+		Sort.Order order = new Sort.Order(Sort.Direction.ASC, "id");
+		Sort sort = new Sort(order);
+		// 分頁
+		PageRequest pageRequest = new PageRequest(pageNo, pageSize, sort);
+		Page<Person> page = personRepository.findAll(pageRequest);
+		List<Person> persons = page.getContent();
+		// 寫入 session
+		httpSession.setAttribute("totalPage", page.getTotalPages());
+		return persons;
 	}
 	
 }
