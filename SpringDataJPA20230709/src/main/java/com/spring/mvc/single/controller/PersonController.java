@@ -49,7 +49,7 @@ public class PersonController {
 	@PutMapping("/")
 	public String update(@ModelAttribute Person person) {
 		// 該筆資料是否存在 ?
-		if(personRepository.findOne(person.getId()) != null) {
+		if(personRepository.exists(person.getId())) {
 			// 修改
 			personRepository.save(person);
 		}
