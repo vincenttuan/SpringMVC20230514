@@ -55,7 +55,7 @@
 						</td>
 						<td>
 							<a href="${ pageContext.request.contextPath }/mvc/person/delete/${ p.id }">
-								Edit
+								Delete
 							</a>
 						</td>
 					</tr>
