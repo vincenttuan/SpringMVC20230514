@@ -32,7 +32,7 @@ public class Person {
 	@Column
 	@Temporal(TemporalType.DATE) // 存入資料表的格式
 	@DateTimeFormat(pattern = "yyyy-MM-dd") // 給 HTML Form 表單呈現的格式
-	@JsonFormat(pattern = "yyyy-NN-dd") // 給 Json 字串呈現的格式
+	@JsonFormat(pattern = "yyyy-MM-dd") // 給 Json 字串呈現的格式
 	private Date birth;
 
 	public Long getId() {
