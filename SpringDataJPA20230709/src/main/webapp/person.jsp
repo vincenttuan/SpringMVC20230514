@@ -10,7 +10,7 @@
 <body style="padding: 20px" ng-app="myApp">
 
 <div id="layout">
-    <div id="main" ng-controller="personController">
+	<div id="main" ng-controller="personController">
         <div class="header">
             <h1>Person</h1>
             <h2>Rest</h2>
