@@ -10,5 +10,7 @@
 	Spring Web JPA
 	<p>
 	<a href="mvc/person/">mvc/person/</a>
+	<p>
+	<a href="mvc/person/page">mvc/person/page</a>
 </body>
 </html>
