@@ -27,8 +27,42 @@
 		</fieldset>
 		
 	</form:form>
-	
-	${ persons }
+	<!-- Person 列表 -->
+	<form class="pure-form">
+		<fieldset>Person List</fieldset>
+		<table class="pure-table pure-table-bordered">
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>Name</th>
+					<th>Password</th>
+					<th>Birth</th>
+					<th>Update</th>
+					<th>Delete</th>
+				</tr>
+			</thead>
+			<tbody>
+				<c:forEach var="p" items="${ persons }">
+					<tr>
+						<td>${ p.id }</td>
+						<td>${ p.name }</td>
+						<td>${ p.password }</td>
+						<td>${ p.birth }</td>
+						<td>
+							<a href="${ pageContext.request.contextPath }/mvc/person/${ p.id }">
+								Edit
+							</a>
+						</td>
+						<td>
+							<a href="${ pageContext.request.contextPath }/mvc/person/delete/${ p.id }">
+								Edit
+							</a>
+						</td>
+					</tr>
+				</c:forEach>
+			</tbody>
+		</table>
+	</form>
 	
 </body>
 </html>
