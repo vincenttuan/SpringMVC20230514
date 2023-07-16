@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.spring.mvc.single.entity.Person;
@@ -45,5 +46,14 @@ public class PersonController {
 		return "redirect:./";
 	}
 	
+	@PutMapping("/")
+	public String update(@ModelAttribute Person person) {
+		// 該筆資料是否存在 ?
+		if(personRepository.findOne(person.getId()) != null) {
+			// 修改
+			personRepository.save(person);
+		}
+		return "redirect:./";
+	}
 	
 }
